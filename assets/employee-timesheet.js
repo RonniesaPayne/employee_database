@@ -21,18 +21,10 @@ $("#submit").on("click", function(event) {
   event.preventDefault();
 
   // Grabbed values from text boxes
-  newName = $("#newName")
-    .val()
-    .trim();
-  newRole = $("#newRole")
-    .val()
-    .trim();
-  newDate = $("#newDate")
-    .val()
-    .trim();
-  newRate = $("#newRate")
-    .val()
-    .trim();
+  newName = $("#newName").val().trim();
+    newRole = $("#newRole").val().trim();
+    newDate = $("#newDate").val().trim();
+    newRate = $("#newRate").val().trim();
 
   // Code for handling the push
   database.ref().push({
@@ -48,6 +40,7 @@ $("#submit").on("click", function(event) {
 database.ref().on(
   "child_added",
   function(snapshot) {
+
     // storing the snapshot.val() in a variable for convenience
     var sv = snapshot.val();
 
@@ -62,10 +55,11 @@ database.ref().on(
     $("#empRole").text(sv.newRole);
     $("#empDate").text(sv.newDate);
     $("#empRate").text(sv.newRate);
-
-    // Handle the errors
-  },
+},
   function(errorObject) {
     console.log("Errors handled: " + errorObject.code);
   }
 );
+    // Handle the errors
+
+  

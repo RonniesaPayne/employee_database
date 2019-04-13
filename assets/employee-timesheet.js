@@ -1,45 +1,46 @@
 var config = {
-    apiKey: "AIzaSyCanlYIc7n-Wel8wDeaMxMzYtViVVCOwpI",
-    authDomain: "recent-user-with-push.firebaseapp.com",
-    databaseURL: "https://recent-user-with-push.firebaseio.com",
-    storageBucket: "recent-user-with-push.appspot.com",
-    messagingSenderId: "208476116054"
-  };
+  apiKey: "AIzaSyDOxW25jGf1zta9DbuRNDnu8y_DOWngOc8",
+  authDomain: "employee-database-fc629.firebaseapp.com",
+  databaseURL: "https://employee-database-fc629.firebaseio.com/",
+  projectId: "employee-database-fc629",
+  storageBucket: "",
+  messagingSenderId: "516436025072"
+};
+firebase.initializeApp(config);
+// Create a variable to reference the database.
+var database = firebase.database();
 
-  firebase.initializeApp(config);
+// Initial Values
+var newName = "";
+var newRole = "";
+var newDate = 0;
+var newRate = "";
 
-  // Create a variable to reference the database.
-  var database = firebase.database();
+// Capture Button Click
+$("#submit").on("click", function(event) {
+  event.preventDefault();
 
-  // Initial Values
-  var newName = "";
-  var newRole = "";
-  var newDate = 0;
-  var newRate = "";
-
-  // Capture Button Click
-  $("#submit").on("click", function(event) {
-    event.preventDefault();
-
-    // Grabbed values from text boxes
-    newName = $("#newName").val().trim();
+  // Grabbed values from text boxes
+  newName = $("#newName").val().trim();
     newRole = $("#newRole").val().trim();
     newDate = $("#newDate").val().trim();
     newRate = $("#newRate").val().trim();
 
-    // Code for handling the push
-    database.ref().push({
-        newName: newName,
-        newRole: newRole,
-        newDate: newDate,
-        newRate: newRate,
-      dateAdded: firebase.database.ServerValue.TIMESTAMP
-    });
-
+  // Code for handling the push
+  database.ref().push({
+    newName: newName,
+    newRole: newRole,
+    newDate: newDate,
+    newRate: newRate,
+    dateAdded: firebase.database.ServerValue.TIMESTAMP
   });
+});
 
-  // Firebase watcher .on("child_added"
-  database.ref().on("child_added", function(snapshot) {
+// Firebase watcher .on("child_added"
+database.ref().on(
+  "child_added",
+  function(snapshot) {
+
     // storing the snapshot.val() in a variable for convenience
     var sv = snapshot.val();
 
@@ -54,8 +55,11 @@ var config = {
     $("#empRole").text(sv.newRole);
     $("#empDate").text(sv.newDate);
     $("#empRate").text(sv.newRate);
-
-    // Handle the errors
-  }, function(errorObject) {
+},
+  function(errorObject) {
     console.log("Errors handled: " + errorObject.code);
-  });
+  }
+);
+    // Handle the errors
+
+  

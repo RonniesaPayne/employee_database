@@ -10,9 +10,13 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
+
   <!-- LINK TO FIREBASE GOES HERE -->
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-
+  <!---LInk to javascript-->
+  <script src="assets/javascript/employee-timesheet.js"></script>
+  <!--Link to jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -113,21 +117,21 @@
             <form role="form">
               <div class="form-group row">
                 <label for="name-input">Name</label>
-                <input class="form-control" id="name-input" type="text">
+                <input class="form-control" id="newName" type="text">
               </div>
               <div class="form-group row">
                 <label for="email-input">Role</label>
-                <input class="form-control" id="email-input" type="email">
+                <input class="form-control" id="newRole" type="text">
               </div>
               <div class="form-group row">
                 <label for="age-input">Start Date</label>
-                <input class="form-control" id="age-input" type="number">
+                <input class="form-control" id="newDate" type="text">
               </div>
               <div class="form-group row">
                 <label for="comment-input">Monthly Rate</label>
-                <input class="form-control" id="comment-input"></input>
+                <input class="form-control" id="newRate" type="text"></input>
               </div>
-              <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+              <button class="btn btn-default" id="submit" type="submit">Submit</button>
             </form>
 
           </div>
